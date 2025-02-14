@@ -21,7 +21,7 @@ const handleModal = () => {
 }
 
     useEffect(() => {
-        fetch('http://localhost:3000/get-posts', {
+        fetch(`${import.meta.env.VITE_BASE_URL}/get-posts`, {
           method: 'GET',
         })
           .then((res) => res.json())

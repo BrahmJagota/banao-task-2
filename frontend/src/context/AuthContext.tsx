@@ -30,7 +30,7 @@ const [authLoading, setAuthLoading] = useState<boolean>(true);
 
 
 useEffect(()=> {
-    fetch('http://localhost:3000/me', {
+    fetch(`${import.meta.env.VITE_BASE_URL}/me`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

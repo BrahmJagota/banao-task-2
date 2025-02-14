@@ -26,7 +26,7 @@ export default function Login () {
     } = useForm<FormData>();
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         console.log('Form submitted', data)
-        fetch('http://localhost:3000/login', {
+        fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

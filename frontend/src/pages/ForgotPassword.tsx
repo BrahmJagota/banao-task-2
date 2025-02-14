@@ -14,7 +14,7 @@ export default function ForgotPassword () {
         } = useForm<FormData>();
         const onSubmit: SubmitHandler<FormData> = async (data) => {
             console.log('Form submitted', data)
-            fetch('http://localhost:3000/forgot-password', {
+            fetch(`${import.meta.env.VITE_BASE_URL}/forgot-password`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

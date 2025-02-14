@@ -10,7 +10,7 @@ interface FormData {
   }
 
 export default function SignUp() {
-    
+        console.log(import.meta.env.VITE_BASE_URL,"env")
     const navigate = useNavigate();
     const {isAuthenticated, authLoading} = useAuthContext();
     useEffect(()=> {
@@ -27,7 +27,7 @@ export default function SignUp() {
     } = useForm<FormData>();
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         console.log('Form submitted', data)
-        fetch('http://localhost:3000/register', {
+        fetch(`${import.meta.env.VITE_BASE_URL}/register`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

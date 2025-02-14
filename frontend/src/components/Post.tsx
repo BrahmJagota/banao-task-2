@@ -20,7 +20,7 @@
 
       const handleDelete = (key: string) => {
         console.log("key", key)
-        fetch(`http://localhost:3000/delete-post/${key}`, {
+        fetch(`${import.meta.env.VITE_BASE_URL}/delete-post/${key}`, {
           method: 'GET',
           credentials: "include",
       })

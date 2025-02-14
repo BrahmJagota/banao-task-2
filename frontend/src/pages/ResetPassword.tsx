@@ -18,7 +18,7 @@ export default function ResetPassword () {
         } = useForm<FormData>();
         const onSubmit: SubmitHandler<FormData> = async (data) => {
             console.log('Form submitted', data)
-            fetch(`http://localhost:3000/new-password/${token}`, {
+            fetch(`${import.meta.env.VITE_BASE_URL}/new-password/${token}`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

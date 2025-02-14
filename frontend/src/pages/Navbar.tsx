@@ -15,7 +15,7 @@ export default function Navbar () {
       navigate('/login')
     }
     const handleLogout = () => {
-      fetch('http://localhost:3000/logout', {
+      fetch(`/logout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
