@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-interface UserProfile {
-    username: string;
-    email: string;
-  }
 
 export default function Navbar () {
     const [isOpen, setIsOpen] = useState(false);

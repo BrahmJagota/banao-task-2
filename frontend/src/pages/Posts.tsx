@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Post } from "../components/Post";
 import { PlusCircle } from "lucide-react";
 import ImageUploadModal from "../components/UploadForm";
-import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
 
 interface PostsInterface {
     caption: string,

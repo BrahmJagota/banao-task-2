@@ -1,4 +1,4 @@
-import {User, Lock } from 'lucide-react';
+import {User } from 'lucide-react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 
 interface FormData {
