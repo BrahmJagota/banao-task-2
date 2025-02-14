@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form"
-import {User, Lock} from 'lucide-react'
+import {Lock} from 'lucide-react'
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 interface FormData {
