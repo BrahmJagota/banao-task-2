@@ -7,6 +7,7 @@ import authRouter from './src/auth/authRoute';
 import connectToDatabase from './src/database/db';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import postRouter from './src/post/postRouter';
 dotenv.config();
 const port = process.env.PORT;
 const app = express();
@@ -33,7 +34,7 @@ app.use(
         }),
         cookie: {
             httpOnly: true,
-                secure: true,
+                secure: false,
                 sameSite: 'strict',
             maxAge: 1000 * 60 * 60 * 24,
             
@@ -42,6 +43,7 @@ app.use(
 )
 
 app.use('/', authRouter)
+app.use('/', postRouter)
 connectToDatabase();
 
 app.get('/', (req, res)=> {

@@ -1,17 +1,18 @@
 import { createContext, useContext, useEffect, useState } from "react";
-
-enum AuthStatus {
-    pending = 'PENDING', 
-    completed = 'COMPLETED'
- }
+interface UserProp {
+    username: string;
+    email: string;
+}
 
 interface AuthContextProps {
     userId: string;
     setUserId: (userId: string) => void;
+    user: UserProp;
+    setUser: (user: UserProp) => void;
     isAuthenticated: boolean;
     setIsAuthenticated: (isAuthenticated: boolean) => void;
-    authStatus: AuthStatus;
-    setAuthStatus: (AuthStatus: AuthStatus) => void;
+    authLoading: boolean;
+    setAuthLoading: (authLoading: boolean) => void;
 
 }
 
@@ -20,8 +21,12 @@ const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 export const AuthContextProvider:React.FC<{children: React.ReactNode}> = ({children}) => {
 const [userId, setUserId] = useState<string>('');
+const [user, setUser] = useState<UserProp>({
+    username: '',
+    email: '',
+})
 const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-const [authStatus, setAuthStatus] = useState<AuthStatus>(AuthStatus.pending);
+const [authLoading, setAuthLoading] = useState<boolean>(true);
 
 
 useEffect(()=> {
@@ -35,14 +40,26 @@ useEffect(()=> {
     .then((res) => res.json())
     .then((data) => {
         console.log(data);
+        setIsAuthenticated(data.authenticated)
+        setAuthLoading(false)
+        setUser({
+            username: data.user.username,
+            email: data.user.email
+        })
     })
     .catch(err => {
         console.log(err);
     })
 },[])
 
+
+
+useEffect(()=> {
+    console.log("change", isAuthenticated)
+    
+},[isAuthenticated])
     return (
-        <AuthContext.Provider value={{userId, setUserId, isAuthenticated, setIsAuthenticated, authStatus, setAuthStatus}}>
+        <AuthContext.Provider value={{userId, setUserId, isAuthenticated, setIsAuthenticated, authLoading, setAuthLoading, user, setUser}}>
             {children}
         </AuthContext.Provider>
     )
